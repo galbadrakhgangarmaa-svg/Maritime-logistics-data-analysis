@@ -1,0 +1,40 @@
+----The following SQL query is written in the Databricks SQL environment, and it is about data enrichment and joining dimension tables to a fact table in order to create one large fact table--. 
+select
+  f.*,
+  t.terminal_name,
+  t.port_location,
+  t.regional_hub,
+  dt.fiscal_year,
+  dt.quarter,
+  dt.month,
+  dt.week,
+  dt.shift,
+  v.vessel_name,
+  v.build_year,
+  ct.p95 as capacity,
+  mm.move_p95 as move_capacity,
+  f.move_duration/24 as move_day,
+  f.container_count / f.move_duration as container_hour,
+  container_count/ct.p95 as capacity_utilization,
+  CASE 
+    WHEN container_count/ct.p95 < 0.6 THEN 'Normal'
+    WHEN container_count/ct.p95 <0.8 Then 'Busy'
+    ELSE 'Congested' 
+    End as capacity_category,
+  move_duration/mm.move_p95 as move_utilization,
+  CASE
+    WHEN move_duration/mm.move_p95 < 0.6 THEN 'Normal duration'
+    WHEN move_duration/mm.move_p95 <0.8 Then 'High duration'
+    ELSE 'Very high duration'
+    END as hour_category
+from fact_cargo_movements f
+left join terminal t
+  on f.terminal_id = t.terminal_id
+left join dim_time dt  
+  on f.date_id = dt.date_id
+left join dim_vessel v
+  on f.vessel_key = v.vessel_key
+left join capacity_terminal ct  
+  on f.terminal_id = ct.terminal_id
+left join move_p95 mm 
+  on f.terminal_id = mm.terminal_id
