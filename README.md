@@ -1,42 +1,9 @@
-# Maritime-logistics-data-analysis
+This data analysis examined 15,000 container movements across 50 terminals spanning four regional hubs (EMEA, APAC, AMER, and LATAM) between 2021 and 2024. The solution was built using a medallion architecture in Databricks, with a star schema data model, while data visualization was developed in Tableau. Data enrichment and validation processes were applied to enhance movement-level insights and operational understanding.
 
-You're a Senior Operations Analyst at Global Maritime Solutions, reporting to the VP of Terminal Operations. Following the 2021 Suez Canal disruption, your company has seen inconsistent cargo handling times across terminal locations. Some terminals are operating beyond optimal capacity while others remain underutilized. Following the 2021 Suez disruption, the company needs to identify operational inefficiencies and optimize terminal allocation to reduce cargo movement times by 15%.
+📊 Movements were categorized based on duration and container volume to evaluate operational performance. The analysis shows that bottlenecked movements account for 5.83% of total movements but contribute 10.17% of total duration. In contrast, underperformed movements represent 13.89% of total movements while contributing 24.38% of total duration, despite handling relatively lower container volumes.
 
-The executive team is preparing a Q1 2025 operational review and needs a data-driven report answering:
-- Where are our operational bottlenecks?
-- Which terminals and vessel types are underperforming?
-- How can we optimize terminal allocation to reduce movement times by 15%?
+⚠️ This pattern suggests potential inefficiencies in underperformed movements, where longer processing times are not aligned with higher throughput. However, due to limited operational variables available in the dataset, the exact root causes behind these differences cannot be fully determined.
 
-1. Suez effect: 
-In March 2021, the Ever Given container ship blocked the Suez Canal for 6 days, disrupting global shipping routes.
+🌍 Additionally, the Suez Canal disruption period had a significant impact on operational performance, with average movement duration increasing from 501.2 hours to 549 hours. The EMEA and LATAM regions were the most affected, experiencing higher delays compared to other hubs.
 
-Brief: Maritime logistics experienced a major disruption in Q1 2021. Can you identify when it occurred and measure its impact on cargo movements and terminal efficiency?
-
-Your analysis angle:
-- Can you identify when the disruption occurred in the data?
-- Did cargo volumes spike before/after the incident?
-- Which regional hubs (EMEA/APAC/AMER) were most affected?
-- How long did it take for operations to return to normal?
-
-Metrics: container_count, move_duration, regional patterns
-
-2. Infrastructure bottleneck
-Some terminals may be operating near or above their optimal capacity. Maritime logistics wants to optimize their terminal operations. Your report should identifies bottlenecks in the infrastructure. 
-
-- Which terminals handle the most cargo movements?
-- Is there a correlation between terminal utilization and movement duration?
-- Are certain vessel categories creating congestion at specific terminals?
-- Which terminals would benefit most from capacity expansion?
-
-Metrics: terminal_capacity (should be added), container_count, move_duration by terminal
-
-3. Efficiency anomalies
-The average time to move cargo (move_duration) varies significantly across terminals, vessel types, and time periods. Understanding these patterns is key to operational improvement.
-
-- What's the baseline efficiency for each vessel category?
-- Which factors most strongly predict longer movement times?
- (vessel age? terminal location? shift timing? regional hub?)
-- Are there outliers that suggest operational problems?
-- Do night shifts take longer than day shifts?
-
-Metrics: move_duration, vessel_category, vessel age, shift (if added correctly), regional_hub
+💡 Recommendation: To improve overall operational efficiency, prioritizing the reduction of delays in underperformed movements presents the greatest opportunity for impact. These movements account for a disproportionate share of total duration and should be further investigated. Targeted optimization in this area could potentially contribute to up to a 15% reduction in overall movement duration.
