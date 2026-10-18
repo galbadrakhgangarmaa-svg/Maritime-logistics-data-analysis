@@ -1,9 +1,3 @@
-This data analysis examined 15,000 container movements across 50 terminals spanning four regional hubs (EMEA, APAC, AMER, and LATAM) between 2021 and 2024. The solution was built using a medallion architecture in Databricks, with a star schema data model, while data visualization was developed in Tableau. Data enrichment and validation processes were applied to enhance movement-level insights and operational understanding.
+End-to-end analytics on 15,000 container movements across 50 port terminals, 2021 to 2024: data pipeline, data model, dashboards, operational analysis and recommendations.
 
-📊 Movements were categorized based on duration and container volume to evaluate operational performance. The analysis shows that bottlenecked movements account for 5.83% of total movements but contribute 10.17% of total duration. In contrast, underperformed movements represent 13.89% of total movements while contributing 24.38% of total duration, despite handling relatively lower container volumes.
-
-⚠️ This pattern suggests potential inefficiencies in underperformed movements, where longer processing times are not aligned with higher throughput. However, due to limited operational variables available in the dataset, the exact root causes behind these differences cannot be fully determined.
-
-🌍 Additionally, the Suez Canal disruption period had a significant impact on operational performance, with average movement duration increasing from 501.2 hours to 549 hours. The EMEA and LATAM regions were the most affected, experiencing higher delays compared to other hubs.
-
-💡 Recommendation: To improve overall operational efficiency, prioritizing the reduction of delays in underperformed movements presents the greatest opportunity for impact. These movements account for a disproportionate share of total duration and should be further investigated. Targeted optimization in this area could potentially contribute to up to a 15% reduction in overall movement duration.
+Full portfolio file link : https://drive.google.com/file/d/1QMcpeEM55bMzVdPPZTaMQ87znlI2RFcQ/view?usp=drive_link
